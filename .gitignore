@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### LOG ###
+logs
+
+### TEST ###
+/src/test
