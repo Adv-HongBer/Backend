@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class HongBerApplication {
+public class HongBerApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(HongBerApplication.class, args);
+        SpringApplication.run(HongBerApp.class, args);
     }
 
 }
