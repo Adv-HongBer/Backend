@@ -1,10 +1,31 @@
-### server ###
+### SERVER ###
 server:
   port: 8081
-### spring ###
-server.port=8081
-spring.profiles.active=local
-### log ###
+### SPRING ###
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: ENC(MA1HBDdQMWoOxTKoxX48SXD/twnynzK9aOjNpGtNfSIm1ksjr+/Drq+7wmEai1kvJZIbg09o5LkyXphI0QsJFyEWMW5JzRSafu6WWG1xMRbbwmO2vDeusP5LP1Pe2W6f)
+    username: ENC(XN1km4RIkMn0VubniHnbWae9atIQMj4sRWv9trRUvZg=)
+    password: ENC(+NcjZkisixv8k1+rNJoG56/kh47oHzMLOH9JiJMYg3g=)
+    hikari:
+      maximum-pool-size: 4
+### JPA ###
+jpa:
+  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  show-sql: true
+  open-in-view: false
+  hibernate:
+    ddl-auto: none
+  properties:
+    hibernate:
+      format_sql: true
+### JASYPT ###
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+### LOG ###
 logging:
   maxFileSize: 500MB
   maxHistory: 21
