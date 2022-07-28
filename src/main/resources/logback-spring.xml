@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property resource="application.properties"/>
-    <springProperty scope="context" name="LOG_LEVEL" source="logging.level.root"/>
-    <springProperty scope="context" name="LOG_PATH" source="logging.file.path"/>
-    <springProperty scope="context" name="LOG_FILE_NAME" source="logging.file.name"/>
-    <springProperty scope="context" name="ERR_LOG_FILE_NAME" source="logging.file.name.err"/>
-    <springProperty scope="context" name="LOG_PATTERN" source="logging.pattern"/>
-    <springProperty scope="context" name="LOG_FILE_PATTERN" source="logging.file.pattern"/>
-    <springProperty scope="context" name="LOG_FILE_ERR_PATTERN" source="logging.file.err.pattern"/>
+    <property resource="application.yml"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %highlight([%-5level]) [%thread] %cyan(%logger{100}) %yellow(%method:%line) - %msg%n"/>
     <springProperty scope="context" name="LOG_MAX_FILE_SIZE" source="logging.maxFileSize"/>
     <springProperty scope="context" name="LOG_MAX_HISTORY" source="logging.maxHistory"/>
     <springProperty scope="context" name="LOG_TOTAL_SIZE_CAP" source="logging.totalSizeCap"/>
+    <springProperty scope="context" name="LOG_LEVEL" source="logging.level.root"/>
+    <springProperty scope="context" name="LOG_PATH" source="logging.file.path"/>
+    <springProperty scope="context" name="LOG_FILE_NAME" source="logging.file.name"/>
+    <springProperty scope="context" name="ERR_LOG_FILE_NAME" source="logging.file.ename"/>
+    <springProperty scope="context" name="LOG_FILE_PATTERN" source="logging.file.pattern"/>
+    <springProperty scope="context" name="LOG_FILE_ERR_PATTERN" source="logging.file.epattern"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

@@ -1,0 +1,19 @@
+### server ###
+server:
+  port: 8081
+### spring ###
+server.port=8081
+spring.profiles.active=local
+### log ###
+logging:
+  maxFileSize: 500MB
+  maxHistory: 21
+  totalSizeCap: 1GB
+  level:
+    root: INFO
+  file:
+    path: ./logs
+    name: server/server
+    ename: server/err
+    pattern: ${logging.file.path}/${logging.file.name}.%d{yyyy-MM-dd}.%i.log.gz
+    epattern: ${logging.file.path}/${logging.file.ename}.%d{yyyy-MM-dd}.%i.log.gz
