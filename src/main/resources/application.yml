@@ -35,6 +35,11 @@ logging:
   totalSizeCap: 1GB
   level:
     root: INFO
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: TRACE
   file:
     path: ./logs
     name: server/server

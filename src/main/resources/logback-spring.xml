@@ -66,27 +66,4 @@
         <appender-ref ref="FILE"/>
         <appender-ref ref="Error"/>
     </root>
-
-<!--    <logger name="org.apache.ibatis" level="DEBUG" additivity="false">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--        <appender-ref ref="FILE"/>-->
-<!--        <appender-ref ref="Error"/>-->
-<!--    </logger>-->
-<!--    <logger name="jdbc" level="OFF"/>-->
-<!--    <logger name="jdbc.sqlonly" level="OFF"/>-->
-<!--    <logger name="jdbc.audit" level="OFF"/>-->
-<!--    <logger name="jdbc.resultset" level="OFF"/>-->
-<!--    <logger name="jdbc.connection" level="OFF"/>-->
-<!--    <logger name="jdbc.sqltiming" level="DEBUG"/>-->
-<!--    <logger name="jdbc.resultsettable" level="OFF"/>-->
-<!--    <logger name="com.zaxxer.hikari.pool.HikariPool" level="DEBUG"/>-->
-<!--    <logger name="org.springframework" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.springframework.web" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="INFO"-->
-<!--            additivity="FALSE"/>-->
-<!--    <logger name="org.quartz.core.QuartzSchedulerThread" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.apache.http.wire" level="INFO" additivity="FALSE"/>-->
-<!--    <logger name="org.apache.http.impl.conn.PoolingHttpClientConnectionManager" level="INFO" additivity="FALSE"/>-->
 </configuration>
