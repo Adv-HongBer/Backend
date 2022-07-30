@@ -11,16 +11,19 @@ spring:
     password: ENC(+NcjZkisixv8k1+rNJoG56/kh47oHzMLOH9JiJMYg3g=)
     hikari:
       maximum-pool-size: 4
-### JPA ###
-jpa:
-  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-  show-sql: true
-  open-in-view: false
-  hibernate:
-    ddl-auto: none
-  properties:
+  ### JPA ###
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    open-in-view: false
     hibernate:
-      format_sql: true
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
 ### JASYPT ###
 jasypt:
   encryptor:

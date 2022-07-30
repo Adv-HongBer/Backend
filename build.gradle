@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -19,7 +18,7 @@ repositories {
 }
 
 dependencies {
-//----runtimeOnly
+//--runtimeOnly
     runtimeOnly 'mysql:mysql-connector-java'
 //--compileOnly
     compileOnly 'org.projectlombok:lombok'
@@ -38,19 +37,21 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //--testImplementation
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//--testCompileOnly
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+//--testAnnotationProcessor
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
 
-test {
-    useJUnitPlatform()
-    systemProperty "jasypt.encryptor.password", project.getProperties().get("jasypt.encryptor.password")
+bootJar {
+    mainClass.set('com.example.hongber.HongBerApp')
 }
 
 bootRun {
     mainClass.set('com.example.hongber.HongBerApp')
     systemProperty "jasypt.encryptor.password", project.getProperties().get("jasypt.encryptor.password")
-
 }
