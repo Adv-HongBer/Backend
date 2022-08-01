@@ -1,6 +1,6 @@
 package com.example.hongber.common.util;
 
-import com.example.hongber.common.enumeration.EnumErrorMsg;
+import com.example.hongber.common.exception.ErrorMsg;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class StringUtil {
         List<String> returnStr = new ArrayList<>();
 
         if (! "0".equals(telNo.substring(0, 1))) {
-            throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+            throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
         }
 
         telNo = eliHyphen(telNo);
@@ -59,10 +59,10 @@ public class StringUtil {
                 returnStr.add(telNo.substring(4, 8));
                 returnStr.add(telNo.substring(8, 12));
             } else {
-                throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+                throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
             }
         } else {
-            throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+            throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
         }
 
         return returnStr;
@@ -72,11 +72,11 @@ public class StringUtil {
         List<String> returnStr = new ArrayList<>();
 
         if (! "0".equals(telNo.substring(0, 1))) {
-            throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+            throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
         }
 
         if (position >= 3 || position < 0) {
-            throw new RuntimeException(EnumErrorMsg.WRONG_PARAMETER.getMsg());
+            throw new RuntimeException(ErrorMsg.WRONG_PARAMETER.getMsg());
         }
 
         telNo = eliHyphen(telNo);
@@ -111,10 +111,10 @@ public class StringUtil {
                 returnStr.add(telNo.substring(4, 8));
                 returnStr.add(telNo.substring(8, 12));
             } else {
-                throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+                throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
             }
         } else {
-            throw new RuntimeException(EnumErrorMsg.WRONG_TEL_NO.getMsg());
+            throw new RuntimeException(ErrorMsg.WRONG_TEL_NO.getMsg());
         }
 
         return returnStr.get(position);
