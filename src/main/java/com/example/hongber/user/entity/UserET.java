@@ -1,5 +1,6 @@
 package com.example.hongber.user.entity;
 
+import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.entity.BaseET;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
