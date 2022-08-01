@@ -25,3 +25,5 @@ ___
 + 공통 entity 추가
 + 회원 관련 entity 추가 및 repository 추가
 + 회웝가입, 로그인 controller, service, repository 추가
+### 2022-08-1
++ 암호화를 위한 aop 제작, 작업의 간단화를 위한 entity 네이밍 수정, 현재 오류로 인한 디버깅 작업 진행
