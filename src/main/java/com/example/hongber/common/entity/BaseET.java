@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -21,30 +22,30 @@ import javax.persistence.MappedSuperclass;
 @DynamicInsert
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity {
+public abstract class BaseET {
     @Column(updatable = false)
     @ColumnDefault("Y")
     private String useYn;
 
     @Column(updatable = false)
     @CreatedDate
-    private String regDt;
+    private LocalDateTime regDt;
 
     @Column(updatable = false)
     private Long regIdx;
 
     @LastModifiedDate
-    private String updDt;
+    private LocalDateTime updDt;
 
     private Long updIdx;
 
     public void setUpd(Long userIdx) {
-        this.updDt = DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS);
+        this.updDt = LocalDateTime.parse(DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS));
         this.updIdx = userIdx;
     }
 
     public void setDel(Long userIdx) {
-        this.updDt = DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS);
+        this.updDt = LocalDateTime.parse(DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS));
         this.updIdx = userIdx;
         this.useYn = "N";
     }

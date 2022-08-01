@@ -1,6 +1,6 @@
 package com.example.hongber.user.entity;
 
-import com.example.hongber.common.entity.BaseEntity;
+import com.example.hongber.common.entity.BaseET;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE user SET useYn = 'N' WHERE idx = ?")
 @Table(name = "user")
-public class UserEntity extends BaseEntity {
+public class UserET extends BaseET {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx")

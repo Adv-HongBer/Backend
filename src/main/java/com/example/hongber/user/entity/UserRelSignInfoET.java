@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @DynamicInsert
 @DynamicUpdate
 @Table(name = "userRelSignInfo")
-public class UserRelSignInfoEntity {
+public class UserRelSignInfoET {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx")
