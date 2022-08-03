@@ -1,6 +1,5 @@
-package com.example.hongber.common.util;
+package com.example.hongber.common.util.encrypt;
 
-import com.example.hongber.common.aop.PBKDF2Encryptor;
 import com.example.hongber.common.exception.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +9,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Base64;
 

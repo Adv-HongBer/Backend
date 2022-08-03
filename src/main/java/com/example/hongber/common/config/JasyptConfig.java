@@ -10,6 +10,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableEncryptableProperties
 public class JasyptConfig {
+    @Value("${jasypt.encryptor.algorithm}")
+    private String algorithm;
+
+    @Value("${jasypt.encryptor.key-obtention-iterations}")
+    private int keyObtentionIterations;
+
+    @Value("${jasypt.encryptor.pool-size}")
+    private int poolSize;
 
     @Value("${jasypt.encryptor.password}")
     private String PASSWORD;
@@ -18,10 +26,10 @@ public class JasyptConfig {
     public PooledPBEStringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         encryptor.setProvider(new BouncyCastleProvider());
-        encryptor.setKeyObtentionIterations(10000);
-        encryptor.setPoolSize(2);
+        encryptor.setKeyObtentionIterations(keyObtentionIterations);
+        encryptor.setPoolSize(poolSize);
         encryptor.setPassword(PASSWORD);
-        encryptor.setAlgorithm("PBEWithSHA256And128BitAES-CBC-BC");
+        encryptor.setAlgorithm(algorithm);
         return encryptor;
     }
 }

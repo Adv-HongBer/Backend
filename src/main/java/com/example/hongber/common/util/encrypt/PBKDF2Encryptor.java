@@ -1,4 +1,4 @@
-package com.example.hongber.common.aop;
+package com.example.hongber.common.util.encrypt;
 
 import com.example.hongber.common.exception.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;
@@ -19,22 +19,22 @@ public class PBKDF2Encryptor {
     private static int sKeyLength;
     private static String sSalt;
 
-    @Value("${encrypt.pbkdf2.algorithm}")
+    @Value("${pbkdf2.algorithm}")
     private void setAlgorithm(String algorithm) {
         sAlgorithm = algorithm;
     }
 
-    @Value("${encrypt.pbkdf2.iteration-count}")
+    @Value("${pbkdf2.iteration-count}")
     private void setIterationCount(int iterationCount) {
         sIterationCount = iterationCount;
     }
 
-    @Value("${encrypt.pbkdf2.key-length}")
+    @Value("${pbkdf2.key-length}")
     private void setKeyLength(int keyLength) {
         sKeyLength = keyLength;
     }
 
-    @Value("${encrypt.pbkdf2.salt}")
+    @Value("${pbkdf2.salt}")
     private void setSalt(String salt) {
         sSalt = salt;
     }

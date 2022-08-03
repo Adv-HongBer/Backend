@@ -1,4 +1,4 @@
-package com.example.hongber.common.aop;
+package com.example.hongber.common.util.encrypt;
 
 import com.example.hongber.common.exception.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;

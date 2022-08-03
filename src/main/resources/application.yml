@@ -27,7 +27,16 @@ spring:
 ### JASYPT ###
 jasypt:
   encryptor:
+    algorithm: PBEWithSHA256And128BitAES-CBC-BC
+    key-obtention-iterations: 10000
+    pool-size: 2
     bean: jasyptStringEncryptor
+### PBKDF2 ###
+pbkdf2:
+  algorithm: ENC(w5RUsaugHuI1W6IsQhObdrRIJeXvNcXw+PorNKpTURWYNraLoPty7tlUjiz498Dy)
+  iteration-count: ENC(gSktgdIB5UM0/1cg6s/7ag+2o8cGH98IdSinaVG8lgw=)
+  key-length: ENC(or069w60M8kBxlRqakaDw0RHITWhhkzG3hEbAqEVI4U=)
+  salt: ENC(8NRlnVUAj/zIAu+Djj/EwSKftMXO9mh2xRH2H02CGsEbsNhTqFsrhv//TeCUkk3J55cCj60p9Qb6v+idsoAyhoJX7GOwhIpSimuNvqXc9x0=)
 ### LOG ###
 logging:
   maxFileSize: 500MB

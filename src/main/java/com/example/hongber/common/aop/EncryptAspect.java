@@ -3,13 +3,16 @@ package com.example.hongber.common.aop;
 import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.enumeration.EncryptType;
 import com.example.hongber.common.enumeration.EncryptType2;
-import com.example.hongber.common.util.AESEncryptor;
+import com.example.hongber.common.util.encrypt.AESEncryptor;
+import com.example.hongber.common.util.encrypt.MD5Encryptor;
+import com.example.hongber.common.util.encrypt.PBKDF2Encryptor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -26,10 +29,7 @@ import java.util.stream.Collectors;
 @Order(1)
 @Component
 public class EncryptAspect {
-    @Around("(execution(* com.example.hongber..repository..*Repository.find*(..))"
-            + " || execution(* com.example.hongber..repository..*Repository.save*(..))"
-            + " || execution(* com.example.hongber..repository..*Repository.update*(..)))"
-            + " && @annotation(com.example.hongber.common.annotation.Encrypt)")
+    @Around(value = "(execution(* com.example.hongber..*Service.*find*(*)) || execution(* com.example.hongber..*Service.*save*(*)))")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         String methodNm = method.getName();
@@ -177,7 +177,7 @@ public class EncryptAspect {
         if (EncryptType.AES128 == type1) {
             if (EncryptType2.ENCRYPT == type2) {
                 field.set(obj, AESEncryptor.encAes128E(data, field.getName()));
-            } else if (EncryptType2.DECRYPT == type2){
+            } else if (EncryptType2.DECRYPT == type2) {
                 field.set(obj, AESEncryptor.decAes128E(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : EncryptType2 is empty!!");
@@ -185,7 +185,7 @@ public class EncryptAspect {
         } else if (EncryptType.AES256 == type1) {
             if (EncryptType2.ENCRYPT == type2) {
                 field.set(obj, AESEncryptor.encAes256S(data, field.getName()));
-            } else if (EncryptType2.DECRYPT == type2){
+            } else if (EncryptType2.DECRYPT == type2) {
                 field.set(obj, AESEncryptor.decAes256S(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : EncryptType2 is empty!!");
