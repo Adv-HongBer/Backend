@@ -12,9 +12,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -26,10 +24,9 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Aspect
-@Order(1)
 @Component
 public class EncryptAspect {
-    @Around(value = "(execution(* com.example.hongber..*Service.*find*(*)) || execution(* com.example.hongber..*Service.*save*(*)))")
+    @Around(value = "(execution(* com.example.hongber..*Service.*find*(*)) || execution(* com.example.hongber..*Service.*save*(*))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         String methodNm = method.getName();
@@ -39,6 +36,7 @@ public class EncryptAspect {
         String INSERT = "insert";
         String UPDATE = "update";
         String SAVE = "save";
+
         if (methodNm.startsWith(INSERT) || methodNm.startsWith(UPDATE) || methodNm.startsWith(SAVE) || encrypt.selOpt()) {
             encParam(pjp);
             decFlag = true;
@@ -49,6 +47,7 @@ public class EncryptAspect {
         String GET = "get";
         String SELECT = "select";
         String FIND = "find";
+
         if (methodNm.startsWith(GET) || methodNm.startsWith(SELECT) || methodNm.startsWith(FIND)) {
             decObj(result);
         }

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Encrypt {
-    EncryptType value() default EncryptType.AES128;
+    EncryptType value() default EncryptType.NONE;
 
     boolean selOpt() default false;
 }

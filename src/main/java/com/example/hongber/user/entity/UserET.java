@@ -1,6 +1,5 @@
 package com.example.hongber.user.entity;
 
-import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.entity.BaseET;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,7 +40,7 @@ public class UserET extends BaseET {
     private Long userStatusIdx;
 
     @Builder
-    public UserET(String userId, String pass, String tel, String email , String userNm , String nickNm , Long userTypeIdx , Long userStatusIdx) {
+    public UserET(String userId, String pass, String tel, String email, String userNm, String nickNm, Long userTypeIdx, Long userStatusIdx) {
         this.userId = userId;
         this.pass = pass;
         this.tel = tel;

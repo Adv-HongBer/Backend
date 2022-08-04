@@ -1,5 +1,6 @@
 package com.example.hongber.user.service;
 
+import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.user.dto.UserDTO;
 import com.example.hongber.user.entity.UserET;
 import com.example.hongber.user.repository.SignUpRepository;
@@ -8,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -15,6 +18,7 @@ public class TestService {
     private final SignUpRepository signUpRepository;
 
     @Transactional
+    @Encrypt
     public void saveTest(UserDTO userDTO) {
         UserET tmpUserInfo = UserET.builder()
                 .userId(userDTO.getUserId())
@@ -30,7 +34,9 @@ public class TestService {
         signUpRepository.save(tmpUserInfo);
     }
 
-    public UserET findTest(String userId) {
-        return signUpRepository.findByUserId(userId);
+    @Encrypt(selOpt = true)
+    public List<UserET> findTest(UserDTO userDTO) {
+
+        return signUpRepository.findByUserId(userDTO.getUserId());
     }
 }

@@ -6,11 +6,13 @@ import com.example.hongber.user.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -25,7 +27,7 @@ public class TestController {
     }
 
     @GetMapping("test")
-    public UserET findTest(@RequestParam String userId) {
-        return testService.findTest(userId);
+    public List<UserET> findTest(@ModelAttribute UserDTO userDTO) {
+        return testService.findTest(userDTO);
     }
 }
