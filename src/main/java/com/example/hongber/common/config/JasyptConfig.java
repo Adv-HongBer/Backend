@@ -20,16 +20,16 @@ public class JasyptConfig {
     private int poolSize;
 
     @Value("${jasypt.encryptor.password}")
-    private String PASSWORD;
+    private String password;
 
     @Bean("jasyptStringEncryptor")
     public PooledPBEStringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         encryptor.setProvider(new BouncyCastleProvider());
+        encryptor.setAlgorithm(algorithm);
         encryptor.setKeyObtentionIterations(keyObtentionIterations);
         encryptor.setPoolSize(poolSize);
-        encryptor.setPassword(PASSWORD);
-        encryptor.setAlgorithm(algorithm);
+        encryptor.setPassword(password);
         return encryptor;
     }
 }

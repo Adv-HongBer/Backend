@@ -3,12 +3,10 @@ server:
   port: 8081
 ### SPRING ###
 spring:
-  profiles:
-    active: local
   datasource:
-    url: ENC(MA1HBDdQMWoOxTKoxX48SXD/twnynzK9aOjNpGtNfSIm1ksjr+/Drq+7wmEai1kvJZIbg09o5LkyXphI0QsJFyEWMW5JzRSafu6WWG1xMRbbwmO2vDeusP5LP1Pe2W6f)
-    username: ENC(XN1km4RIkMn0VubniHnbWae9atIQMj4sRWv9trRUvZg=)
-    password: ENC(+NcjZkisixv8k1+rNJoG56/kh47oHzMLOH9JiJMYg3g=)
+    url: ENC(PE1o6madOQvZ1jMzNlAIVI0bQrDsXcl3iT6fcMI/dOaBY6arLzbpUotyimTJBqOArsG6myGw1iWCVAyFlmYkRyZodjC6nRZ7OnA5uLS6EK55ledrk4S7jXnyEOOkZKCcIirAPsssHsexPvkoNWtffw==)
+    username: ENC(qwS1qPBSj1PmCKAR/I4vQNFQQhitJBADFnwS8kJKjk0=)
+    password: ENC(UZh8cdnjjIdI2e9oo16qNXvAgpUWVS+TJKat2QPY6fQ=)
     hikari:
       maximum-pool-size: 4
   ### JPA ###
@@ -28,15 +26,15 @@ spring:
 jasypt:
   encryptor:
     algorithm: PBEWithSHA256And128BitAES-CBC-BC
-    key-obtention-iterations: 10000
-    pool-size: 2
+    key-obtention-iterations: 12940
+    pool-size: 1
     bean: jasyptStringEncryptor
 ### PBKDF2 ###
 pbkdf2:
-  algorithm: ENC(w5RUsaugHuI1W6IsQhObdrRIJeXvNcXw+PorNKpTURWYNraLoPty7tlUjiz498Dy)
-  iteration-count: ENC(gSktgdIB5UM0/1cg6s/7ag+2o8cGH98IdSinaVG8lgw=)
-  key-length: ENC(or069w60M8kBxlRqakaDw0RHITWhhkzG3hEbAqEVI4U=)
-  salt: ENC(8NRlnVUAj/zIAu+Djj/EwSKftMXO9mh2xRH2H02CGsEbsNhTqFsrhv//TeCUkk3J55cCj60p9Qb6v+idsoAyhoJX7GOwhIpSimuNvqXc9x0=)
+  algorithm: ENC(YlcHpywnsuJfM/N1HlKS+i+ES7x8oYNtfz1vFxQYGefVzUjyR51EFzTaLWL8bVOg)
+  iteration-count: ENC(qfcS5rBDZlUgOk1MV5hlv4XZWandRPPaFWIWvJjHoQk=)
+  key-length: ENC(40FNAxOIvtSVnTk9hnoJ+5oSlxnHOKjGVvxyPG2LJSQ=)
+  salt: ENC(lHrK8CPaCnp2g/JcQvpUJgW6LMK902sG0IscoTsjHEHAhjq5r3ZY4oz5Ork4Txltvq1VHtPClFAghpjASSdiYjnKg7Gj1U9q80n4SEy5QkQ=)
 ### LOG ###
 logging:
   maxFileSize: 500MB
