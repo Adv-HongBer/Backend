@@ -13,7 +13,7 @@ public interface SignUpRepository extends Repository<UserET, Long> {
     List<UserET> findByUserId(String userId);
 
     // save
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     void save(UserET userET);
 
     // delete

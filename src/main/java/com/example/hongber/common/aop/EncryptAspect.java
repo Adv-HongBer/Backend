@@ -181,14 +181,6 @@ public class EncryptAspect {
             } else {
                 log.error("=======> EncryptAspect : EncryptType2 is empty!!");
             }
-        } else if (EncryptType.AES256 == type1) {
-            if (EncryptType2.ENCRYPT == type2) {
-                field.set(obj, AESEncryptor.encAes256S(data, field.getName()));
-            } else if (EncryptType2.DECRYPT == type2) {
-                field.set(obj, AESEncryptor.decAes256S(data, field.getName()));
-            } else {
-                log.error("=======> EncryptAspect : EncryptType2 is empty!!");
-            }
         } else if (EncryptType.SHA256 == type1) {
             if (EncryptType2.ENCRYPT == type2) {
                 field.set(obj, PBKDF2Encryptor.encrypt(data, field.getName()));

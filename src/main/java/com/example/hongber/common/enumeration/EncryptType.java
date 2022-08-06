@@ -5,5 +5,4 @@ public enum EncryptType {
     MD5,
     SHA256,
     AES128,
-    AES256
 }

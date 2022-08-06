@@ -19,7 +19,16 @@ public class TestService {
 
     @Transactional
     public void saveTest(UserDTO userDTO) {
-        UserET tmpUserInfo = UserET.builder().userId(userDTO.getUserId()).pass(userDTO.getPass()).tel(userDTO.getTel()).email(userDTO.getEmail()).userNm(userDTO.getUserNm()).nickNm(userDTO.getNickNm()).userTypeIdx(userDTO.getUserTypeIdx()).userStatusIdx(userDTO.getUserStatusIdx()).build();
+        UserET tmpUserInfo = UserET.builder()
+                .userId(userDTO.getUserId())
+                .pass(userDTO.getPass())
+                .tel(userDTO.getTel())
+                .email(userDTO.getEmail())
+                .userNm(userDTO.getUserNm())
+                .nickNm(userDTO.getNickNm())
+                .userTypeIdx(userDTO.getUserTypeIdx())
+                .userStatusIdx(userDTO.getUserStatusIdx())
+                .build();
 
         signUpRepository.save(tmpUserInfo);
     }
