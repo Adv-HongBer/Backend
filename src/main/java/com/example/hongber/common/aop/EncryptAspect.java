@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 public class EncryptAspect {
-    @Around(value = "(execution(* com.example.hongber..*Service.*find*(*)) || execution(* com.example.hongber..*Service.*save*(*))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
+    @Around(value = "(execution(* com.example.hongber..*Repository.*find*(*)) || execution(* com.example.hongber..*Repository.*save*(*))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         String methodNm = method.getName();
