@@ -2,7 +2,6 @@ package com.example.hongber.user.dto;
 
 import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.dto.BaseDTO;
-import com.example.hongber.common.enumeration.EncryptType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,17 +10,17 @@ import lombok.ToString;
 @Setter
 @ToString
 public class UserDTO extends BaseDTO {
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String userId;
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String pass;
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String tel;
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String email;
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String userNm;
-    @Encrypt(EncryptType.AES128)
+    @Encrypt
     private String nickNm;
     private Long userTypeIdx;
     private Long userStatusIdx;

@@ -2,6 +2,7 @@ package com.example.hongber.common.entity;
 
 import com.example.hongber.common.constant.ConstDateFormat;
 import com.example.hongber.common.util.DateUtil;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @MappedSuperclass
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @DynamicInsert
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
