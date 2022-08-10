@@ -12,7 +12,7 @@ spring:
   ### JPA ###
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
+    show-sql: false
     open-in-view: false
     hibernate:
       ddl-auto: none
@@ -21,7 +21,7 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 ### JASYPT ###
 jasypt:
   encryptor:
@@ -53,3 +53,13 @@ logging:
     ename: server/err
     pattern: ${logging.file.path}/${logging.file.name}.%d{yyyy-MM-dd}.%i.log.gz
     epattern: ${logging.file.path}/${logging.file.ename}.%d{yyyy-MM-dd}.%i.log.gz
+### P6SPY ###
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
+      logging: slf4j
+    datasource-proxy:
+      query:
+        log-level: info
