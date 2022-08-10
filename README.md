@@ -57,3 +57,7 @@ ___
 + validation 추가 및 예외 처리 핸들러 추가
 + 설정파일(config) 폴더링
 + 회원 entity 및 로그인, 회원가입 임시 controller, service, repository 추가
++ 로그파일 저장 경로 및 오류 로그만 필터링한 파일 저장 경로 변경 및 이전 로그 파일 저장 경로 변경
+### 2022-08-11
++ log4jdbc 플러그인 추가 및 yml 설정 추가
++ log4jdbc properties 파일 추가
