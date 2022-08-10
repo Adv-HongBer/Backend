@@ -26,12 +26,11 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 public class EncryptAspect {
-    @Around(value = "(execution(* com.example.hongber..*Repository.*find*(*)) || execution(* com.example.hongber..*Repository.*save*(*))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
+    @Around(value = "(execution(* com.example.hongber..*Repository.*find*(..)) || execution(* com.example.hongber..*Repository.*save*(..))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         String methodNm = method.getName();
         Encrypt encrypt = method.getAnnotation(Encrypt.class);
-        boolean decFlag = false;
 
         String INSERT = "insert";
         String UPDATE = "update";
@@ -39,7 +38,6 @@ public class EncryptAspect {
 
         if (methodNm.startsWith(INSERT) || methodNm.startsWith(UPDATE) || methodNm.startsWith(SAVE) || encrypt.selOpt()) {
             encParam(pjp);
-            decFlag = true;
         }
 
         Object result = pjp.proceed();
@@ -50,10 +48,6 @@ public class EncryptAspect {
 
         if (methodNm.startsWith(GET) || methodNm.startsWith(SELECT) || methodNm.startsWith(FIND)) {
             decObj(result);
-        }
-
-        if (decFlag) {
-            decParam(pjp);
         }
 
         return result;
@@ -72,18 +66,6 @@ public class EncryptAspect {
             }
         } catch (Exception e) {
             log.error("=======> EncryptAspect : encParam!! : errorMsg : [{}]", e.toString());
-        }
-    }
-
-    private void decParam(JoinPoint jp) {
-        Object[] objs = jp.getArgs();
-
-        if (objs == null) {
-            return;
-        }
-
-        for (Object obj : objs) {
-            decObj(obj);
         }
     }
 
