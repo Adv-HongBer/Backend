@@ -62,4 +62,4 @@ decorator:
       logging: slf4j
     datasource-proxy:
       query:
-        log-level: info
+        log-level: INFO
