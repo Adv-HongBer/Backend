@@ -49,3 +49,11 @@ ___
 + 휴식
 ### 2022-08-09
 + 계정정보 일부 변경, BaseET에 null 값이 리턴되지 않도록 어노테이션 JsonInclude 추가, 현재 Repository에 암호화 aop는 적용이 불가능한 것으로 확인되어 학습 진행 중
+### 2022-08-10
++ JPA 로그에 쿼리 출력 임시 제거 및 p6spy를 통해 쿼리 출력 이후 jdbc와 logback 연결 예정
++ p6spy 플러그인 추가 및 모든 플러그인에 버전 기입
++ 코드 정렬 - 불필요 코드 제거 및 테스트 파일 삭제
++ 암호화 aop 수정
++ validation 추가 및 예외 처리 핸들러 추가
++ 설정파일(config) 폴더링
++ 회원 entity 및 로그인, 회원가입 임시 controller, service, repository 추가
