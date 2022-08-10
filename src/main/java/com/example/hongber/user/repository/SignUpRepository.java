@@ -1,15 +1,13 @@
 package com.example.hongber.user.repository;
 
+import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.user.entity.UserET;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
-import java.util.List;
-
-@Repository
-public interface SignUpRepository extends JpaRepository<UserET, Long> {
-    // find
-    List<UserET> findByUserId(String userId);
+public interface SignUpRepository extends Repository<UserET, Long> {
+    // save
+    @Encrypt
+    void save(UserET userET);
 
     // delete
 }

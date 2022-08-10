@@ -1,5 +1,9 @@
 package com.example.hongber.user.service;
 
+import com.example.hongber.user.dto.SignUpReqDTO;
+import com.example.hongber.user.dto.UserDTO;
+import com.example.hongber.user.entity.UserET;
+import com.example.hongber.user.repository.SignUpRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -7,10 +11,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class SignUpService {
-    public void SingUp() {
+    private final SignUpRepository signUpRepository;
 
+    @Transactional
+    public void SingUp(SignUpReqDTO signUpReqDTO) {
+        UserET userInfo = UserET.builder()
+                .userId(signUpReqDTO.getUserId())
+                .pass(signUpReqDTO.getPass())
+                .tel(signUpReqDTO.getTel())
+                .email(signUpReqDTO.getEmail())
+                .userNm(signUpReqDTO.getUserNm())
+                .nickNm(signUpReqDTO.getNickNm())
+                .userTypeIdx(signUpReqDTO.getUserTypeIdx())
+                .userStatusIdx(signUpReqDTO.getUserStatusIdx())
+                .build();
+
+        signUpRepository.save(userInfo);
     }
 }
