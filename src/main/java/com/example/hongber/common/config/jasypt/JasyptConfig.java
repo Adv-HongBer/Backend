@@ -1,4 +1,4 @@
-package com.example.hongber.common.config;
+package com.example.hongber.common.config.jasypt;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
