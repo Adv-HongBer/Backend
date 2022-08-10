@@ -49,10 +49,10 @@ logging:
             sql: TRACE
   file:
     path: ./logs
-    name: server/server
-    ename: server/err
-    pattern: ${logging.file.path}/${logging.file.name}.%d{yyyy-MM-dd}.%i.log.gz
-    epattern: ${logging.file.path}/${logging.file.ename}.%d{yyyy-MM-dd}.%i.log.gz
+    name: server
+    ename: error
+    pattern: ${logging.file.path}/old/run/${logging.file.name}.%d{yyyy-MM-dd}.%i.log.gz
+    epattern: ${logging.file.path}/old/err/${logging.file.ename}.%d{yyyy-MM-dd}.%i.log.gz
 ### P6SPY ###
 decorator:
   datasource:
