@@ -1,7 +1,8 @@
 package com.example.hongber.common.entity;
 
 import com.example.hongber.common.constant.ConstDateFormat;
-import com.example.hongber.common.util.DateUtil;
+import com.example.hongber.common.constant.ConstUseYn;
+import com.example.hongber.common.util.common.DateUtil;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ import java.time.LocalDateTime;
 @DynamicUpdate
 public abstract class BaseET {
     @Column(updatable = false)
-    @ColumnDefault("Y")
+    @ColumnDefault(ConstUseYn.USE_Y)
     private String useYn;
 
     @Column(updatable = false)

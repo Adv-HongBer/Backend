@@ -1,4 +1,4 @@
-package com.example.hongber.common.util;
+package com.example.hongber.common.util.common;
 
 import com.example.hongber.common.exception.ErrorMsg;
 import com.google.gson.Gson;

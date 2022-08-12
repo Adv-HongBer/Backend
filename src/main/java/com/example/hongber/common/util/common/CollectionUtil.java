@@ -1,4 +1,4 @@
-package com.example.hongber.common.util;
+package com.example.hongber.common.util.common;
 
 import org.springframework.lang.Nullable;
 
