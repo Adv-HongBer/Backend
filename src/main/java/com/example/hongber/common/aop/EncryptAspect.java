@@ -1,8 +1,8 @@
 package com.example.hongber.common.aop;
 
 import com.example.hongber.common.annotation.Encrypt;
+import com.example.hongber.common.enumeration.EncryptAction;
 import com.example.hongber.common.enumeration.EncryptType;
-import com.example.hongber.common.enumeration.EncryptType2;
 import com.example.hongber.common.util.encrypt.AESEncryptor;
 import com.example.hongber.common.util.encrypt.MD5Encryptor;
 import com.example.hongber.common.util.encrypt.PBKDF2Encryptor;
@@ -20,7 +20,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Aspect
@@ -62,7 +61,7 @@ public class EncryptAspect {
             }
 
             for (Object obj : objs) {
-                execute(obj, EncryptType2.ENCRYPT);
+                execute(obj, EncryptAction.ENCRYPT);
             }
         } catch (Exception e) {
             log.error("=======> EncryptAspect : encParam!! : errorMsg : [{}]", e.toString());
@@ -71,13 +70,13 @@ public class EncryptAspect {
 
     private void decObj(Object obj) {
         try {
-            execute(obj, EncryptType2.DECRYPT);
+            execute(obj, EncryptAction.DECRYPT);
         } catch (Exception e) {
             log.error("=======> EncryptAspect : decrypt!! : errorMsg : [{}]", e.toString());
         }
     }
 
-    private void execute(Object obj, EncryptType2 type) throws Exception {
+    private void execute(Object obj, EncryptAction type) throws Exception {
         if (obj == null) {
             return;
         }
@@ -91,19 +90,19 @@ public class EncryptAspect {
         }
     }
 
-    private void map(Map<?, ?> map, EncryptType2 type) throws Exception {
+    private void map(Map<?, ?> map, EncryptAction type) throws Exception {
         for (Object obj : map.values()) {
             setField(obj, type);
         }
     }
 
-    private void list(List<?> list, EncryptType2 type) throws Exception {
+    private void list(List<?> list, EncryptAction type) throws Exception {
         for (Object obj : list) {
             setField(obj, type);
         }
     }
 
-    private void setField(Object obj, EncryptType2 type) throws Exception {
+    private void setField(Object obj, EncryptAction type) throws Exception {
         if (obj == null) {
             return;
         }
@@ -111,7 +110,7 @@ public class EncryptAspect {
         setField2(obj, obj.getClass(), type);
     }
 
-    private void setField2(Object obj, Class<?> clazz, EncryptType2 type2) throws Exception {
+    private void setField2(Object obj, Class<?> clazz, EncryptAction type2) throws Exception {
         if (clazz == null) {
             return;
         }
@@ -122,7 +121,7 @@ public class EncryptAspect {
             setField2(obj, sClazz, type2);
         }
 
-        List<Field> fields = Arrays.stream(clazz.getDeclaredFields()).filter(this::isCheck).collect(Collectors.toList());
+        List<Field> fields = Arrays.stream(clazz.getDeclaredFields()).filter(this::isCheck).toList();
         Object oData;
         EncryptType type1;
         for (Field field : fields) {
@@ -150,27 +149,27 @@ public class EncryptAspect {
         }
     }
 
-    private void setField3(Field field, Object obj, String data, EncryptType type1, EncryptType2 type2) throws Exception {
+    private void setField3(Field field, Object obj, String data, EncryptType type1, EncryptAction type2) throws Exception {
         if (StringUtils.isBlank(data)) {
             return;
         }
 
         if (EncryptType.AES128 == type1) {
-            if (EncryptType2.ENCRYPT == type2) {
+            if (EncryptAction.ENCRYPT == type2) {
                 field.set(obj, AESEncryptor.encAes128E(data, field.getName()));
-            } else if (EncryptType2.DECRYPT == type2) {
+            } else if (EncryptAction.DECRYPT == type2) {
                 field.set(obj, AESEncryptor.decAes128E(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : EncryptType2 is empty!!");
             }
         } else if (EncryptType.SHA256 == type1) {
-            if (EncryptType2.ENCRYPT == type2) {
+            if (EncryptAction.ENCRYPT == type2) {
                 field.set(obj, PBKDF2Encryptor.encrypt(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : SHA256 : only encrypt!!");
             }
         } else if (EncryptType.MD5 == type1) {
-            if (EncryptType2.ENCRYPT == type2) {
+            if (EncryptAction.ENCRYPT == type2) {
                 field.set(obj, MD5Encryptor.encrypt(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : MD5 : only encrypt!!");

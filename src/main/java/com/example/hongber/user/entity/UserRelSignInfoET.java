@@ -1,7 +1,7 @@
 package com.example.hongber.user.entity;
 
 import com.example.hongber.common.constant.ConstDateFormat;
-import com.example.hongber.common.util.DateUtil;
+import com.example.hongber.common.util.common.DateUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,5 +1,5 @@
 package com.example.hongber.common.enumeration;
 
-public enum EncryptType2 {
+public enum EncryptAction {
     ENCRYPT, DECRYPT
 }
