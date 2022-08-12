@@ -1,7 +1,6 @@
 package com.example.hongber.user.service;
 
 import com.example.hongber.user.dto.SignUpReqDTO;
-import com.example.hongber.user.dto.UserDTO;
 import com.example.hongber.user.entity.UserET;
 import com.example.hongber.user.repository.SignUpRepository;
 import lombok.RequiredArgsConstructor;

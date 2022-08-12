@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class SignInService {
     private final SignInRepository signInRepository;
 
+    @Transactional(readOnly = true)
     public UserET signIn(SignInReqDTO signInReqDTO) {
         UserET userInfo = UserET.builder()
                 .userId(signInReqDTO.getUserId())
