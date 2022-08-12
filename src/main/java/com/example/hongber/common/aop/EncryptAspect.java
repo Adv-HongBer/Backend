@@ -25,7 +25,15 @@ import java.util.Map;
 @Aspect
 @Component
 public class EncryptAspect {
-    @Around(value = "(execution(* com.example.hongber..*Repository.*find*(..)) || execution(* com.example.hongber..*Repository.*save*(..))) && @annotation(com.example.hongber.common.annotation.Encrypt)")
+    @Around(value = "(" +
+            "execution(* com.example.hongber..*Repository.*find*(..)) || " +
+            "execution(* com.example.hongber..*Repository.*save*(..)) ||" +
+            "execution(* com.example.hongber..*Mapper.*get*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*find*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*select*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*update*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*save*(..))) && " +
+            "@annotation(com.example.hongber.common.annotation.Encrypt)")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         String methodNm = method.getName();

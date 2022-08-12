@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <property resource="application.yml"/>
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %highlight([%-5level]) [%thread] %cyan(%logger{100}) %yellow(%method:%line) - %msg%n"/>
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss} %highlight([%-5level]) [%thread] %cyan(%logger{100}) %yellow(%method:%line) - %msg%n"/>
     <springProperty scope="context" name="LOG_MAX_FILE_SIZE" source="logging.maxFileSize"/>
     <springProperty scope="context" name="LOG_MAX_HISTORY" source="logging.maxHistory"/>
     <springProperty scope="context" name="LOG_TOTAL_SIZE_CAP" source="logging.totalSizeCap"/>
@@ -60,6 +61,25 @@
             <totalSizeCap>${LOG_TOTAL_SIZE_CAP}</totalSizeCap>
         </rollingPolicy>
     </appender>
+
+    <logger name="jdbc" level="OFF"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.connection" level="OFF"/>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.sqltiming" level="DEBUG"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.resultsettable" level="OFF"/>
+    <logger name="org.hibernate.SQL" level="INFO" additivity="FALSE"/>
+    <logger name="org.springframework" level="INFO" additivity="FALSE"/>
+    <logger name="org.springframework.web" level="INFO" additivity="FALSE"/>
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" additivity="FALSE"/>
+    <logger name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" level="INFO" additivity="FALSE"/>
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="INFO"
+            additivity="FALSE"/>
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="INFO"
+            additivity="FALSE"/>
+    <logger name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener" level="INFO"
+            additivity="FALSE"/>
 
     <root level="${LOG_LEVEL}">
         <appender-ref ref="CONSOLE"/>

@@ -46,7 +46,7 @@ logging:
       hibernate:
         type:
           descriptor:
-            sql: TRACE
+            sql: OFF
   file:
     path: ./logs
     name: server
