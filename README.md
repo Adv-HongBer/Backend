@@ -77,3 +77,6 @@ ___
 + 오류 메세지 수정 및 추가
 + 기본 Exception 클래스 추가 및 ExceptionHandlers 클래스 추가로 exception 관련 설정, 코드정렬과 기존 ValidationExceptionHandler 클래스 삭제
 + Exception 코드 수정 및 Jpa의 save 함수가 리턴값을 가지도록 변경
++ 오류로그 추가 및 Jpa 함수 추가
++ 회원가입 로직 변경
++ 회원가입 로직 원복
