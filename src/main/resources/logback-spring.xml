@@ -76,10 +76,6 @@
     <logger name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" level="INFO" additivity="FALSE"/>
     <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="INFO"
             additivity="FALSE"/>
-    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="INFO"
-            additivity="FALSE"/>
-    <logger name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener" level="INFO"
-            additivity="FALSE"/>
 
     <root level="${LOG_LEVEL}">
         <appender-ref ref="CONSOLE"/>
