@@ -1,6 +1,7 @@
 package com.example.hongber.common.util.encrypt;
 
-import com.example.hongber.common.exception.ErrorMsg;
+import com.example.hongber.common.exception.BaseException;
+import com.example.hongber.common.exception.msg.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -54,7 +55,7 @@ public class PBKDF2Encryptor {
             return skf.generateSecret(ks).getEncoded();
         } catch (Exception e) {
             log.error("PBKDF2Encryptor : encrypt error!! : Field=[" + fieldNm + "]", e);
-            throw new RuntimeException(ErrorMsg.ENCRYPT_FAIL.getMsg());
+            throw new BaseException(ErrorMsg.ENCRYPT_FAIL.getMsg());
         }
     }
 
@@ -63,7 +64,7 @@ public class PBKDF2Encryptor {
             return String.format("%0" + (bytes.length << 1) + "x", new BigInteger(1, bytes));
         } catch (Exception e) {
             log.error("PBKDF2Encryptor : convert error!! : Field=[" + fieldNm + "]", e);
-            throw new RuntimeException(ErrorMsg.DECRYPT_FAIL.getMsg());
+            throw new BaseException(ErrorMsg.DECRYPT_FAIL.getMsg());
         }
     }
 }

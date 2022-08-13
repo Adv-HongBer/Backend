@@ -1,6 +1,7 @@
 package com.example.hongber.common.util.encrypt;
 
-import com.example.hongber.common.exception.ErrorMsg;
+import com.example.hongber.common.exception.BaseException;
+import com.example.hongber.common.exception.msg.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -40,7 +41,7 @@ public class AESEncryptor {
             return Base64.getEncoder().encodeToString(cipherByte);
         } catch (Exception e) {
             log.error("AESEncryptor : encrypt error!! : Field=[" + fieldNm + "]", e);
-            throw new RuntimeException(ErrorMsg.ENCRYPT_FAIL.getMsg());
+            throw new BaseException(ErrorMsg.ENCRYPT_FAIL.getMsg());
         }
     }
     public static String decAes128E(String str, String fieldNm) {
@@ -52,7 +53,7 @@ public class AESEncryptor {
             return new String(cipher.doFinal(cipherByte), StandardCharsets.UTF_8);
         } catch (Exception e) {
             log.error("AESEncryptor : decrypt error!! : Field=[" + fieldNm + "]", e);
-            throw new RuntimeException(ErrorMsg.DECRYPT_FAIL.getMsg());
+            throw new BaseException(ErrorMsg.DECRYPT_FAIL.getMsg());
         }
     }
 }

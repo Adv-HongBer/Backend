@@ -1,5 +1,7 @@
 package com.example.hongber.user.service;
 
+import com.example.hongber.common.exception.BaseException;
+import com.example.hongber.common.exception.msg.ErrorMsg;
 import com.example.hongber.user.dto.SignUpReqDTO;
 import com.example.hongber.user.entity.UserET;
 import com.example.hongber.user.repository.SignUpRepository;
@@ -15,7 +17,7 @@ public class SignUpService {
     private final SignUpRepository signUpRepository;
 
     @Transactional
-    public void SingUp(SignUpReqDTO signUpReqDTO) {
+    public Long SingUp(SignUpReqDTO signUpReqDTO) {
         UserET userInfo = UserET.builder()
                 .userId(signUpReqDTO.getUserId())
                 .pass(signUpReqDTO.getPass())
@@ -25,6 +27,10 @@ public class SignUpService {
                 .nickNm(signUpReqDTO.getNickNm())
                 .build();
 
-        signUpRepository.save(userInfo);
+        try {
+            return signUpRepository.save(userInfo).getIdx();
+        } catch (Exception e) {
+            throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
+        }
     }
 }

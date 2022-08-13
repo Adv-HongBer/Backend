@@ -1,5 +1,7 @@
 package com.example.hongber.user.service;
 
+import com.example.hongber.common.exception.BaseException;
+import com.example.hongber.common.exception.msg.ErrorMsg;
 import com.example.hongber.user.dto.SignInReqDTO;
 import com.example.hongber.user.entity.UserET;
 import com.example.hongber.user.repository.SignInRepository;
@@ -21,6 +23,10 @@ public class SignInService {
                 .pass(signInReqDTO.getPass())
                 .build();
 
-        return signInRepository.findByUserIdAndPass(userInfo);
+        try {
+            return signInRepository.findByUserIdAndPass(userInfo);
+        } catch (Exception e) {
+            throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
+        }
     }
 }

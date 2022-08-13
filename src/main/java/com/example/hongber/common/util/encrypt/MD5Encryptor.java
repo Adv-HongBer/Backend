@@ -1,6 +1,7 @@
 package com.example.hongber.common.util.encrypt;
 
-import com.example.hongber.common.exception.ErrorMsg;
+import com.example.hongber.common.exception.BaseException;
+import com.example.hongber.common.exception.msg.ErrorMsg;
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.MessageDigest;
@@ -23,7 +24,7 @@ public class MD5Encryptor {
 			}
 		} catch (Exception e) {
 			log.error("MD5Encryptor : encrypt error!! : Field=["+ fieldNm +"]", e);
-			throw new RuntimeException(ErrorMsg.ENCRYPT_FAIL.getMsg());
+			throw new BaseException(ErrorMsg.ENCRYPT_FAIL.getMsg());
 		}
 		return sb.toString();
 	}
