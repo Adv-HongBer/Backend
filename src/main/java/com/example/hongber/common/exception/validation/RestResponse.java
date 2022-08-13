@@ -8,6 +8,5 @@ import java.util.List;
 @Data
 public class RestResponse {
     @Value("false")
-    private Boolean success;
     private List<RestResponseMessage> message;
 }
