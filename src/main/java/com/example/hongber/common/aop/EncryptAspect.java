@@ -26,12 +26,19 @@ import java.util.Map;
 @Component
 public class EncryptAspect {
     @Around(value = "(" +
+            "execution(* com.example.hongber..*Repository.*get*(..)) || " +
+            "execution(* com.example.hongber..*Repository.*count*(..)) || " +
+            "execution(* com.example.hongber..*Repository.*exists*(..)) || " +
             "execution(* com.example.hongber..*Repository.*find*(..)) || " +
+            "execution(* com.example.hongber..*Repository.*update*(..)) ||" +
+            "execution(* com.example.hongber..*Repository.*detete*(..)) ||" +
             "execution(* com.example.hongber..*Repository.*save*(..)) ||" +
             "execution(* com.example.hongber..*Mapper.*get*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*count*(..)) || " +
             "execution(* com.example.hongber..*Mapper.*find*(..)) || " +
             "execution(* com.example.hongber..*Mapper.*select*(..)) || " +
             "execution(* com.example.hongber..*Mapper.*update*(..)) || " +
+            "execution(* com.example.hongber..*Mapper.*detete*(..)) || " +
             "execution(* com.example.hongber..*Mapper.*save*(..))) && " +
             "@annotation(com.example.hongber.common.annotation.Encrypt)")
     public Object encrypt(ProceedingJoinPoint pjp) throws Throwable {

@@ -27,11 +27,10 @@ public class SignUpService {
                 .nickNm(signUpReqDTO.getNickNm())
                 .build();
 
-        if (signUpRepository.findAlreadySignUpInfo(userInfo)) {
-            throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
-        } else {
+        try {
             return signUpRepository.save(userInfo).getIdx();
-
+        } catch (Exception e) {
+            throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
         }
     }
 }
