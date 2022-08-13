@@ -34,7 +34,4 @@ public class SignUpReqDTO extends BaseDTO {
 
     @NotBlank(message = "닉네임은 필수 입력값입니다.")
     private String nickNm;
-
-    private Long userTypeIdx;
-    private Long userStatusIdx;
 }

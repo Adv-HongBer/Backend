@@ -29,6 +29,8 @@ public class UserRelSignInfoET {
     private Long idx;
 
     private Long userIdx;
+    private Long userTypeIdx;
+    private Long userStatusIdx;
     private String reSignDt;
     private String lastSignInDt;
     private String changePassDt;

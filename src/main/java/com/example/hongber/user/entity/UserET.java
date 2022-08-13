@@ -48,6 +48,4 @@ public class UserET extends BaseET {
     private String userNm;
     @Encrypt
     private String nickNm;
-    private Long userTypeIdx;
-    private Long userStatusIdx;
 }

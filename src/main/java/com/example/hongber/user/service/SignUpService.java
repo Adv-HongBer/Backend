@@ -23,8 +23,6 @@ public class SignUpService {
                 .email(signUpReqDTO.getEmail())
                 .userNm(signUpReqDTO.getUserNm())
                 .nickNm(signUpReqDTO.getNickNm())
-                .userTypeIdx(signUpReqDTO.getUserTypeIdx())
-                .userStatusIdx(signUpReqDTO.getUserStatusIdx())
                 .build();
 
         signUpRepository.save(userInfo);
