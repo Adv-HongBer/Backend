@@ -23,7 +23,7 @@ public class ExceptionHandlers {
         RestResponseMessage restResponseMessage = new RestResponseMessage();
         restResponseMessage.setMessage("시스템에 오류가 발생하였습니다. 해당 문제가 지속된다면 관리자에게 문의해 주시기 바랍니다.");
 
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(restResponseMessage);
