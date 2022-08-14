@@ -125,7 +125,7 @@ public class EncryptAspect {
         setField2(obj, obj.getClass(), type);
     }
 
-    private void setField2(Object obj, Class<?> clazz, EncryptAction type2) throws Exception {
+    private void setField2(Object obj, Class<?> clazz, EncryptAction action) throws Exception {
         if (clazz == null) {
             return;
         }
@@ -133,12 +133,12 @@ public class EncryptAspect {
         Class<?> sClazz = clazz.getSuperclass();
 
         if (isCheck2(sClazz.getSimpleName())) {
-            setField2(obj, sClazz, type2);
+            setField2(obj, sClazz, action);
         }
 
         List<Field> fields = Arrays.stream(clazz.getDeclaredFields()).filter(this::isCheck).toList();
         Object oData;
-        EncryptType type1;
+        EncryptType type;
         for (Field field : fields) {
             field.setAccessible(true);
             oData = field.get(obj);
@@ -148,43 +148,43 @@ public class EncryptAspect {
             }
 
             if (field.isAnnotationPresent(Encrypt.class)) {
-                type1 = field.getDeclaredAnnotation(Encrypt.class).value();
+                type = field.getDeclaredAnnotation(Encrypt.class).value();
                 if (oData instanceof List) {
                     for (Object data : (List<?>) oData) {
-                        setField3(field, obj, (String) data, type1, type2);
+                        setField3(field, obj, (String) data, type, action);
                     }
                 } else if (oData instanceof String) {
-                    setField3(field, obj, (String) oData, type1, type2);
+                    setField3(field, obj, (String) oData, type, action);
                 } else {
                     log.error("=======> EncryptAspect : Field type is unknown!!");
                 }
             } else {
-                execute(oData, type2);
+                execute(oData, action);
             }
         }
     }
 
-    private void setField3(Field field, Object obj, String data, EncryptType type1, EncryptAction type2) throws Exception {
+    private void setField3(Field field, Object obj, String data, EncryptType type, EncryptAction action) throws Exception {
         if (StringUtils.isBlank(data)) {
             return;
         }
 
-        if (EncryptType.AES128 == type1) {
-            if (EncryptAction.ENCRYPT == type2) {
+        if (EncryptType.AES128 == type) {
+            if (EncryptAction.ENCRYPT == action) {
                 field.set(obj, AESEncryptor.encAes128E(data, field.getName()));
-            } else if (EncryptAction.DECRYPT == type2) {
+            } else if (EncryptAction.DECRYPT == action) {
                 field.set(obj, AESEncryptor.decAes128E(data, field.getName()));
             } else {
-                log.error("=======> EncryptAspect : EncryptType2 is empty!!");
+                log.error("=======> EncryptAspect : EncryptAction is empty!!");
             }
-        } else if (EncryptType.SHA256 == type1) {
-            if (EncryptAction.ENCRYPT == type2) {
+        } else if (EncryptType.SHA256 == type) {
+            if (EncryptAction.ENCRYPT == action) {
                 field.set(obj, PBKDF2Encryptor.encrypt(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : SHA256 : only encrypt!!");
             }
-        } else if (EncryptType.MD5 == type1) {
-            if (EncryptAction.ENCRYPT == type2) {
+        } else if (EncryptType.MD5 == type) {
+            if (EncryptAction.ENCRYPT == action) {
                 field.set(obj, MD5Encryptor.encrypt(data, field.getName()));
             } else {
                 log.error("=======> EncryptAspect : MD5 : only encrypt!!");
