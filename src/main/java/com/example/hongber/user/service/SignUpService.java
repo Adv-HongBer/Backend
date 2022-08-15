@@ -1,5 +1,6 @@
 package com.example.hongber.user.service;
 
+import com.example.hongber.common.constant.ConstExistsCode;
 import com.example.hongber.common.exception.BaseException;
 import com.example.hongber.common.exception.msg.ErrorMsg;
 import com.example.hongber.user.dto.SignUpReqDTO;
@@ -15,9 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class SignUpService {
     private final SignUpRepository signUpRepository;
+    private final CommonUserService commonUserService;
 
     @Transactional
-    public Long SingUp(SignUpReqDTO signUpReqDTO) {
+    public Long SignUp(SignUpReqDTO signUpReqDTO) {
         UserET userInfo = UserET.builder()
                 .userId(signUpReqDTO.getUserId())
                 .pass(signUpReqDTO.getPass())
@@ -27,10 +29,14 @@ public class SignUpService {
                 .nickNm(signUpReqDTO.getNickNm())
                 .build();
 
-        try {
-            return signUpRepository.save(userInfo).getIdx();
-        } catch (Exception e) {
+        commonUserService.ChkNickNameIsAlreadyExistsThrow(userInfo.getNickNm());
+        commonUserService.ChkTelIsAlreadyExistsThrow(userInfo.getTel());
+        commonUserService.ChkEmailIsAlreadyExistsThrow(userInfo.getEmail());
+
+        if (ConstExistsCode.EXISTS == signUpRepository.findAlreadySignUpInfo(userInfo)) {
             throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
         }
+
+        return signUpRepository.save(userInfo).getIdx();
     }
 }

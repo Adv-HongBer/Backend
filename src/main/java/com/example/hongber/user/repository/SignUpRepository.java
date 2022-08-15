@@ -8,13 +8,12 @@ import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 public interface SignUpRepository extends JpaRepository<UserET, Long> {
-    //
+    // find
     @Encrypt(selOpt = true)
-    @Query(nativeQuery = true, value = "SELECT * FROM user WHERE userId = :#{#userInfo.userId} AND pass = :#{#userInfo.pass}")
-    Boolean findAlreadySignUpInfo(@Param("userInfo") UserET userInfo);
+    @Query(nativeQuery = true, value = "SELECT EXISTS(SELECT * FROM user WHERE tel = :#{#userInfo.tel} OR email = :#{#userInfo.email}) AS isExists")
+    Integer findAlreadySignUpInfo(@Param("userInfo") UserET userInfo);
 
     // save
-    @Encrypt
     UserET save(UserET userET);
 
     // delete
