@@ -72,7 +72,7 @@ ___
 ### 2022-08-13
 + 오류 출력을 위한 출력로그 수정
 + 테이블 정규화 후 관련 entity수정
-### 2022-08-13
+### 2022-08-14
 + 상수 클래스 추가
 + 오류 메세지 수정 및 추가
 + 기본 Exception 클래스 추가 및 ExceptionHandlers 클래스 추가로 exception 관련 설정, 코드정렬과 기존 ValidationExceptionHandler 클래스 삭제
