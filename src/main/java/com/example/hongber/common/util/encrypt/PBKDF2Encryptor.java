@@ -40,6 +40,10 @@ public class PBKDF2Encryptor {
         sSalt = salt;
     }
 
+    public static String encrypt(String str) {
+        return encrypt(str, "None");
+    }
+
     public static String encrypt(String str, String fieldNm) {
         return convert(encryptToBytes(str, fieldNm), fieldNm);
     }
