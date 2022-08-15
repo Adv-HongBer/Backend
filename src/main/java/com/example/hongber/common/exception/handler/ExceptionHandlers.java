@@ -1,7 +1,6 @@
 package com.example.hongber.common.exception.handler;
 
 import com.example.hongber.common.exception.BaseException;
-import com.example.hongber.common.exception.validation.RestResponse;
 import com.example.hongber.common.exception.validation.RestResponseMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,21 +30,19 @@ public class ExceptionHandlers {
 
     // validation
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<RestResponse> processValidationError(MethodArgumentNotValidException e) {
+    public ResponseEntity<List<RestResponseMessage>> processValidationError(MethodArgumentNotValidException e) {
         List<RestResponseMessage> resList = new ArrayList<>();
-        RestResponse restResponse = new RestResponse();
         e.getBindingResult().getFieldErrors().forEach(i -> {
             RestResponseMessage res = new RestResponseMessage();
             res.setTarget(i.getField());
             res.setMessage(i.getDefaultMessage());
             resList.add(res);
         });
-        restResponse.setMessage(resList);
 
         log.error(resList.toString());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(restResponse);
+                .body(resList);
     }
 
     // base
