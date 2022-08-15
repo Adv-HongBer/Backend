@@ -18,7 +18,7 @@ public class SignUpController {
     private final SignUpService signUpService;
 
     @PostMapping("signUp")
-    public Long SingUp(@Validated @RequestBody SignUpReqDTO signUpReqDTO) {
-        return signUpService.SingUp(signUpReqDTO);
+    public Long SignUp(@Validated @RequestBody SignUpReqDTO signUpReqDTO) {
+        return signUpService.SignUp(signUpReqDTO);
     }
 }
