@@ -77,10 +77,15 @@ ___
 + 오류 메세지 수정 및 추가
 + 기본 Exception 클래스 추가 및 ExceptionHandlers 클래스 추가로 exception 관련 설정, 코드정렬과 기존 ValidationExceptionHandler 클래스 삭제
 + Exception 코드 수정 및 Jpa의 save 함수가 리턴값을 가지도록 변경
-+ 오류로그 추가 및 Jpa 함수 추가
-+ 회원가입 로직 변경
-+ 회원가입 로직 원복
++ 문제가 발생한 커밋
+  + 오류로그 추가 및 Jpa 함수 추가
+  + 회원가입 로직 변경
+  + 회원가입 로직 원복
 ### 2022-08-15 > 커밋관련 문제로 커밋 수정
+<details>
+<summary>수정 전 커밋 내역</summary>
+<div markdown="22_08_15_before">
+
 + ~~pbkdf2암호화 클래스 일부 수정~~
 + ~~암호화 aop 클래스 수정~~
 + ~~Jpa Exists 결과 상수 코드 추가~~
@@ -93,7 +98,14 @@ ___
 + ~~불필요 코드 제거~~
 + ~~회원가입 검사 로직 추가~~
 + ~~validation 관련 exception 수정~~
----
+
+</div>
+</details>
+
+<details>
+<summary>수정 후 커밋 내역</summary>
+<div markdown="22_08_15_after">
+
 + pbkdf2암호화 클래스 일부 수정
 + 암호화 aop 클래스 수정
 + 회원가입 로직 수정 및 비밀번호 암호화 방식 변경 및 네이밍 수정, 회원가입 검사 로직 추가
@@ -101,3 +113,6 @@ ___
 + 에러 메세지 추가
 + 로그 출력 수정
 + 관련 파일 추가
+
+</div>
+</details>
