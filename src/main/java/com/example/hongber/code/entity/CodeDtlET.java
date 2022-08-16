@@ -29,7 +29,7 @@ public class CodeDtlET extends BaseET {
     @Column(name = "idx")
     private Long idx;
 
-    private Long codeGroupId;
+    private Long codeMaId;
     private String codeDtlNm;
-    private String codeDesc;
+    private String codeDtlDesc;
 }

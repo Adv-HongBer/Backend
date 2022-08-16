@@ -29,6 +29,6 @@ public class CodeMaET extends BaseET {
     @Column(name = "idx")
     private Long idx;
 
-    private String codeGroupNm;
-    private String groupDesc;
+    private String codeMaNm;
+    private String codeMaDesc;
 }
