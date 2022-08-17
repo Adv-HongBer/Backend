@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 
 public class BaseController {
     // 200 OK
-    public ResponseEntity<RestResponseMessage<Object>> setOk(Object data) {
-        RestResponseMessage<Object> response = new RestResponseMessage<>();
+    public <T> ResponseEntity<RestResponseMessage<T>> setOk(T data) {
+        RestResponseMessage<T> response = new RestResponseMessage<>();
         response.setData(data);
 
         return ResponseEntity.status(HttpStatus.OK)
@@ -17,8 +17,8 @@ public class BaseController {
     }
 
     // 400 Bad Request
-    public ResponseEntity<RestResponseMessage<Object>> setBadReq(Object data) {
-        RestResponseMessage<Object> response = new RestResponseMessage<>();
+    public <T> ResponseEntity<RestResponseMessage<T>> setBadReq(T data) {
+        RestResponseMessage<T> response = new RestResponseMessage<>();
         response.setData(data);
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -27,8 +27,8 @@ public class BaseController {
     }
 
     // 403 Forbidden
-    public ResponseEntity<RestResponseMessage<Object>> setForbidden(Object data) {
-        RestResponseMessage<Object> response = new RestResponseMessage<>();
+    public <T> ResponseEntity<RestResponseMessage<T>> setForbidden(T data) {
+        RestResponseMessage<T> response = new RestResponseMessage<>();
         response.setData(data);
 
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
@@ -37,8 +37,8 @@ public class BaseController {
     }
 
     // 404 Not Found
-    public ResponseEntity<RestResponseMessage<Object>> setNotFound(Object data) {
-        RestResponseMessage<Object> response = new RestResponseMessage<>();
+    public <T> ResponseEntity<RestResponseMessage<T>> setNotFound(T data) {
+        RestResponseMessage<T> response = new RestResponseMessage<>();
         response.setData(data);
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -47,8 +47,8 @@ public class BaseController {
     }
 
     // 500 Internal Server Error
-    public ResponseEntity<RestResponseMessage<Object>> setInternalServerError(Object data) {
-        RestResponseMessage<Object> response = new RestResponseMessage<>();
+    public <T> ResponseEntity<RestResponseMessage<T>> setISE(T data) {
+        RestResponseMessage<T> response = new RestResponseMessage<>();
         response.setData(data);
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
