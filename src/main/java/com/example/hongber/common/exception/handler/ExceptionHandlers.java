@@ -1,7 +1,7 @@
 package com.example.hongber.common.exception.handler;
 
 import com.example.hongber.common.exception.BaseException;
-import com.example.hongber.common.exception.validation.RestResponseMessage;
+import com.example.hongber.common.response.RestResponseMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
