@@ -1,5 +1,6 @@
 package com.example.hongber.user.controller;
 
+import com.example.hongber.common.controller.BaseController;
 import com.example.hongber.common.response.RestResponseMessage;
 import com.example.hongber.user.dto.SignInReqDTO;
 import com.example.hongber.user.entity.UserET;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
-public class SignInController {
+public class SignInController extends BaseController {
     private final SignInService signInService;
 
     @PostMapping("signIn")
