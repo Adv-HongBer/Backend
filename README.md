@@ -125,3 +125,5 @@ ___
 + api 요청 응답값 responseEntity 관련 파일 임시 생성
 + jwt 토큰 플러그인 추가
 + 응답값 responseEntity 관련 파일 임시 수정
+### 2022-08-18
++ 회사 회식 참여
