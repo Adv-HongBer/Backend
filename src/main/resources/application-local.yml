@@ -1,0 +1,20 @@
+### SERVER ###
+server:
+  port: 8081
+### SPRING ###
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 4
+      connection-test-query: SELECT 1
+      read:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        jdbc-url: ENC(seZbIRlPMy3EYx9nA4m/XEhveGzLC4amln6W3Cwjbak0tAryivMBmHTrql1IgYwZidam4m4HXPzi1I0ox9Q/GAsm2U1mPDaE7H7O/6c1gCLt85+4tmTWLDVT19r72LX8Zt1Y6bnVTIl/xhvL422o9g==)
+        username: ENC(C2i5nirR5/D0b/rWQ73Wp8UDVcmqSeQzXFoe4v62aus=)
+        password: ENC(Bm57P0ee5ioc3IZlVkFhtHV2+3hepUOtYRR4/0p1TQ4=)
+      write:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        jdbc-url: ENC(seZbIRlPMy3EYx9nA4m/XEhveGzLC4amln6W3Cwjbak0tAryivMBmHTrql1IgYwZidam4m4HXPzi1I0ox9Q/GAsm2U1mPDaE7H7O/6c1gCLt85+4tmTWLDVT19r72LX8Zt1Y6bnVTIl/xhvL422o9g==)
+        username: ENC(mIcX/jT3oUqXhnFspyOqSwNiRCZZU4LlKVPNAwHFqgE=)
+        password: ENC(Wa58rEaJvllC6VkNFCjFvDZI3JelOXceJtpV1zki08I=)
