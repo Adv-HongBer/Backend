@@ -70,16 +70,35 @@
     <logger name="jdbc.resultset" level="OFF"/>
     <logger name="jdbc.resultsettable" level="OFF"/>
     <logger name="org.hibernate.SQL" level="INFO" additivity="FALSE"/>
-<!--    <logger name="org.springframework" level="INFO" additivity="FALSE"/>-->
     <logger name="org.springframework.web" level="INFO" additivity="FALSE"/>
     <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" additivity="FALSE"/>
     <logger name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" level="INFO" additivity="FALSE"/>
     <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="INFO"
             additivity="FALSE"/>
 
-    <root level="${LOG_LEVEL}">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-        <appender-ref ref="Error"/>
-    </root>
+    <springProfile name="local">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="Error"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="Error"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="Error"/>
+        </root>
+
+        <logger name="org.springframework" level="INFO" additivity="FALSE"/>
+    </springProfile>
 </configuration>
