@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
-import java.util.Objects;
 
 @Configuration
 @EnableTransactionManagement
@@ -42,7 +40,7 @@ public class DataSourceConfig {
     public DataSource routingDataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource") DataSource readDataSource) {
         ReplicationRoutingDataSource routingDataSource = new ReplicationRoutingDataSource();
 
-        HashMap dataSourceMap = new HashMap<>();
+        HashMap<Object, Object> dataSourceMap = new HashMap<>();
         dataSourceMap.put("write", writeDataSource);
         dataSourceMap.put("read", readDataSource);
         routingDataSource.setTargetDataSources(dataSourceMap);
@@ -63,7 +61,7 @@ public class DataSourceConfig {
     }
 
     @Bean("sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource, ApplicationContext applicationContext) throws Exception {
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
         ssfb.setDataSource(dataSource(routingDataSource(writeDataSource(), readDataSource())));
 
