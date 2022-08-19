@@ -3,7 +3,6 @@ package com.example.hongber.user.entity;
 import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.entity.BaseET;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,7 +39,6 @@ public class UserET extends BaseET {
     @Encrypt
     private String userId;
     @Encrypt
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pass;
     @Encrypt
     private String tel;
