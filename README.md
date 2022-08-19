@@ -127,3 +127,15 @@ ___
 + 응답값 responseEntity 관련 파일 임시 수정
 ### 2022-08-18
 + 회사 회식 참여
+### 2022-08-19
++ 암호화 방식 수정
++ 코드 정렬
++ object를 json형태로 변형시키는 유틸 클래스 추가
++ jackson 플러그인 추가
++ 로그 Aspect추가 및 암호화 Aspect 수정
++ log Aspect 수정
++ JsonProperty 수정
++ JsonUtil 수정
++ BaseController 수정 - 로그 추가
+### 2022-08-20
++ EncryptAspect 출력 로그 수정, JsonUtil 수정
