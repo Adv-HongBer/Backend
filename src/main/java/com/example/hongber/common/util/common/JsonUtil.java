@@ -5,13 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
 public class JsonUtil {
-    public JsonUtil(ObjectMapper objectMapper) {
-        JsonUtil.objectMapper = objectMapper;
-    }
-
-    private static ObjectMapper objectMapper;
+   private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static String toJson(Object object) {
         String jsonString = null;
