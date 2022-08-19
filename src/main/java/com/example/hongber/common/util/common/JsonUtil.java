@@ -2,13 +2,12 @@ package com.example.hongber.common.util.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 public class JsonUtil {
-   private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static String toJson(Object object) {
+    public static <T> String toJson(T object) {
         String jsonString = null;
 
         try {
@@ -20,7 +19,7 @@ public class JsonUtil {
         return jsonString;
     }
 
-    public static String toJsonPretty(Object object) {
+    public static <T> String toJsonPretty(T object) {
         String jsonString = null;
 
         try {

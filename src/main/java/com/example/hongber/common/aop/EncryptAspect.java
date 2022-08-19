@@ -81,7 +81,7 @@ public class EncryptAspect {
                 execute(obj, EncryptAction.ENCRYPT);
             }
         } catch (Exception e) {
-            log.error("=======> EncryptAspect : encParam!! : errorMsg : [{}]", e.toString());
+            log.error("EncryptAspect : encParam : errorMsg : {}", e.toString());
         }
     }
 
@@ -89,7 +89,7 @@ public class EncryptAspect {
         try {
             execute(obj, EncryptAction.DECRYPT);
         } catch (Exception e) {
-            log.error("=======> EncryptAspect : decrypt!! : errorMsg : [{}]", e.toString());
+            log.error("EncryptAspect : decrypt : errorMsg : {}", e.toString());
         }
     }
 
@@ -158,7 +158,7 @@ public class EncryptAspect {
                 } else if (oData instanceof String) {
                     setField3(field, obj, (String) oData, type, action);
                 } else {
-                    log.error("=======> EncryptAspect : Field type is unknown!!");
+                    log.error("EncryptAspect : Field type is unknown");
                 }
             } else {
                 execute(oData, action);
@@ -177,22 +177,22 @@ public class EncryptAspect {
             } else if (EncryptAction.DECRYPT == action) {
                 field.set(obj, AESEncryptor.decAes128E(data, field.getName()));
             } else {
-                log.error("=======> EncryptAspect : EncryptAction is empty!!");
+                log.error("EncryptAspect : EncryptAction is empty");
             }
         } else if (EncryptType.SHA256 == type) {
             if (EncryptAction.ENCRYPT == action) {
                 field.set(obj, PBKDF2Encryptor.encrypt(data, field.getName()));
             } else {
-                log.error("=======> EncryptAspect : SHA256 : only encrypt!!");
+                log.error("EncryptAspect : SHA256 only encrypt");
             }
         } else if (EncryptType.MD5 == type) {
             if (EncryptAction.ENCRYPT == action) {
                 field.set(obj, MD5Encryptor.encrypt(data, field.getName()));
             } else {
-                log.error("=======> EncryptAspect : MD5 : only encrypt!!");
+                log.error("EncryptAspect : MD5 only encrypt");
             }
         } else {
-            log.error("=======> EncryptAspect : EncryptType is empty!!");
+            log.error("EncryptAspect : EncryptType is empty");
         }
     }
 
