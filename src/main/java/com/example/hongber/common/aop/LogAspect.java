@@ -17,8 +17,7 @@ public class LogAspect {
          + " || execution(* com.example.hongber..*Service.*(..))"
          + " || execution(* com.example.hongber..*Repository.*(..))"
          + " || execution(* com.example.hongber..*Mapper.*(..))"
-         + " || execution(* com.example.hongber..*Repository.*(..)))"
-         + " && !@annotation(com.example.hongber.common.annotation.NoLog)")
+         + " || execution(* com.example.hongber..*Repository.*(..)))")
    public Object logging(ProceedingJoinPoint pjp) throws Throwable {
        log.info("'{}.{}({})'", pjp.getSignature().getDeclaringTypeName(), pjp.getSignature().getName(), JsonUtil.toJson(pjp.getArgs()));
        return pjp.proceed();
