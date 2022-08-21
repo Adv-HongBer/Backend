@@ -24,6 +24,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
 //--implementation
     implementation 'com.auth0:java-jwt:4.0.0'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.70'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -36,6 +37,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-web-services:2.7.2'
 //--annotationProcessor
