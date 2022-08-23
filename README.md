@@ -147,3 +147,7 @@ ___
 + 배너 수정, 플러그인 정렬
 + jwt 플러그인 임시 추가
 + 임시 spring security 세팅 <- jwt 관련 filter, provider는 추후 학습 후 추가 예정
+### 2022-08-22
++ spring security의 PBKDF2Encryptor util 클래스로 추가
+### 2022-08-23
++ 주말 오프라인 회의 예정
