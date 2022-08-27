@@ -1,4 +1,4 @@
-package com.example.hongber.user.dto;
+package com.example.hongber.member.dto;
 
 import com.example.hongber.common.dto.BaseDTO;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
 public class SignUpReqDTO extends BaseDTO {
     @NotBlank(message = "아이디는 필수 입력값입니다.")
     @Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*()?_~]{8,20}$", message = "아이디는 8~20자 영문 대 소문자, 숫자, 특수문자를 사용해야합니다.")
-    private String userId;
+    private String memberId;
 
     @NotBlank(message = "비밀번호는 필수 입력값입니다.")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\d~!@#$%^&*()+|=]{10,20}$", message = "비밀번호는 8~20자 영문 대 소문자, 숫자, 특수문자를 사용해야합니다.")
@@ -30,7 +30,7 @@ public class SignUpReqDTO extends BaseDTO {
 
     @NotBlank(message = "성함은 필수 입력값입니다.")
     @Pattern(regexp = "^[가-힣]{2,}$", message = "성함을 정확히 입력해주세요.")
-    private String userNm;
+    private String memberNm;
 
     @NotBlank(message = "닉네임은 필수 입력값입니다.")
     private String nickNm;

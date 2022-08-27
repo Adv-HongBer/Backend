@@ -1,4 +1,4 @@
-package com.example.hongber.user.entity;
+package com.example.hongber.member.entity;
 
 import com.example.hongber.common.constant.ConstDateFormat;
 import com.example.hongber.common.util.common.DateUtil;
@@ -21,32 +21,32 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-@Table(name = "userRelSignInfo")
-public class UserRelSignInfoET {
+@Table(name = "memberRelSignInfo")
+public class MemberRelSignInfoET {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx")
     private Long idx;
 
-    private Long userIdx;
-    private Long userTypeIdx;
-    private Long userStatusIdx;
+    private Long memberIdx;
+    private Long memberTypeIdx;
+    private Long memberStatusIdx;
     private String reSignDt;
     private String lastSignInDt;
     private String changePassDt;
 
-    public void saveReSign(Long userIdx) {
-        this.userIdx = userIdx;
+    public void saveReSign(Long memberIdx) {
+        this.memberIdx = memberIdx;
         this.reSignDt = DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS);
     }
 
-    public void saveLastSignIn(Long userIdx) {
-        this.userIdx = userIdx;
+    public void saveLastSignIn(Long memberIdx) {
+        this.memberIdx = memberIdx;
         this.lastSignInDt = DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS);
     }
 
-    public void saveChangePass(Long userIdx) {
-        this.userIdx = userIdx;
+    public void saveChangePass(Long memberIdx) {
+        this.memberIdx = memberIdx;
         this.changePassDt = DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS);
     }
 }

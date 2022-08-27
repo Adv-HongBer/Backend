@@ -1,9 +1,10 @@
-package com.example.hongber.user.controller;
+package com.example.hongber.member.controller;
 
 import com.example.hongber.common.controller.BaseController;
 import com.example.hongber.common.response.RestResponseMessage;
-import com.example.hongber.user.dto.SignUpReqDTO;
-import com.example.hongber.user.service.SignUpService;
+import com.example.hongber.member.dto.SignInReqDTO;
+import com.example.hongber.member.entity.MemberET;
+import com.example.hongber.member.service.SignInService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
-public class SignUpController extends BaseController {
-    private final SignUpService signUpService;
+@RequestMapping("/member")
+public class SignInController extends BaseController {
+    private final SignInService signInService;
 
-    @PostMapping("signUp")
-    public ResponseEntity<RestResponseMessage<Long>> SignUp(@Validated @RequestBody SignUpReqDTO signUpReqDTO) {
-        return setOk(signUpService.SignUp(signUpReqDTO));
+    @PostMapping("signIn")
+    public ResponseEntity<RestResponseMessage<MemberET>> SignIn(@Validated @RequestBody SignInReqDTO signInReqDTO) {
+        return setOk(signInService.signIn(signInReqDTO));
     }
 }

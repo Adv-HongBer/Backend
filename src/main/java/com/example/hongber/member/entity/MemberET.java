@@ -1,4 +1,4 @@
-package com.example.hongber.user.entity;
+package com.example.hongber.member.entity;
 
 import com.example.hongber.common.annotation.Encrypt;
 import com.example.hongber.common.entity.BaseET;
@@ -29,9 +29,9 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @DynamicInsert
 @DynamicUpdate
-@SQLDelete(sql = "UPDATE user SET useYn = 'N' WHERE idx = ?")
-@Table(name = "user")
-public class UserET extends BaseET {
+@SQLDelete(sql = "UPDATE member SET useYn = 'N' WHERE idx = ?")
+@Table(name = "member")
+public class MemberET extends BaseET {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx")
@@ -39,7 +39,7 @@ public class UserET extends BaseET {
 
     @Encrypt
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String userId;
+    private String memberId;
     @Encrypt
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pass;
@@ -48,7 +48,7 @@ public class UserET extends BaseET {
     @Encrypt
     private String email;
     @Encrypt
-    private String userNm;
+    private String memberNm;
     @Encrypt
     private String nickNm;
 }

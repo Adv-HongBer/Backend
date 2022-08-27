@@ -1,10 +1,10 @@
-package com.example.hongber.user.service;
+package com.example.hongber.member.service;
 
 import com.example.hongber.common.constant.ConstExistsCode;
 import com.example.hongber.common.exception.BaseException;
 import com.example.hongber.common.exception.msg.ErrorMsg;
 import com.example.hongber.common.util.encrypt.AESEncryptor;
-import com.example.hongber.user.repository.CommonUserRepository;
+import com.example.hongber.member.repository.CommonMemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CommonUserService {
+public class CommonMemberService {
     private Boolean flag = false;
-    private final CommonUserRepository commonUserRepository;
+    private final CommonMemberRepository commonMemberRepository;
 
     // non throw
     public Boolean ChkNickNameIsAlreadyExists(String nickName) {
@@ -38,7 +38,7 @@ public class CommonUserService {
     }
 
     public Boolean ChkNickNameIsAlreadyExists(String nickName, Boolean throwAble) {
-        Integer result = commonUserRepository.chkNickNameIsAlreadyExists(AESEncryptor.encAes128E(nickName));
+        Integer result = commonMemberRepository.chkNickNameIsAlreadyExists(AESEncryptor.encAes128E(nickName));
 
         if (ConstExistsCode.EXISTS == result) {
             if (throwAble) {
@@ -52,7 +52,7 @@ public class CommonUserService {
     }
 
     public Boolean ChkTelIsAlreadyExists(String tel, Boolean throwAble) {
-        Integer result = commonUserRepository.chkTelIsAlreadyExists(AESEncryptor.encAes128E(tel));
+        Integer result = commonMemberRepository.chkTelIsAlreadyExists(AESEncryptor.encAes128E(tel));
 
         if (ConstExistsCode.EXISTS == result) {
             if (throwAble) {
@@ -66,7 +66,7 @@ public class CommonUserService {
     }
 
     public Boolean ChkEmailIsAlreadyExists(String email, Boolean throwAble) {
-        Integer result = commonUserRepository.chkEmailIsAlreadyExists(AESEncryptor.encAes128E(email));
+        Integer result = commonMemberRepository.chkEmailIsAlreadyExists(AESEncryptor.encAes128E(email));
 
         if (ConstExistsCode.EXISTS == result) {
             if (throwAble) {

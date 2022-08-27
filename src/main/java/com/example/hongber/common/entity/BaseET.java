@@ -39,14 +39,14 @@ public abstract class BaseET {
 
     private Long updIdx;
 
-    public void setUpd(Long userIdx) {
+    public void setUpd(Long memberIdx) {
         this.updDt = LocalDateTime.parse(DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS));
-        this.updIdx = userIdx;
+        this.updIdx = memberIdx;
     }
 
-    public void setDel(Long userIdx) {
+    public void setDel(Long memberIdx) {
         this.updDt = LocalDateTime.parse(DateUtil.getNowDate(ConstDateFormat.YYYY_MM_DD_HH_MM_SS));
-        this.updIdx = userIdx;
+        this.updIdx = memberIdx;
         this.useYn = "N";
     }
 }

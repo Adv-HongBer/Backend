@@ -1,11 +1,11 @@
-package com.example.hongber.user.service;
+package com.example.hongber.member.service;
 
 import com.example.hongber.common.constant.ConstExistsCode;
 import com.example.hongber.common.exception.BaseException;
 import com.example.hongber.common.exception.msg.ErrorMsg;
-import com.example.hongber.user.dto.SignUpReqDTO;
-import com.example.hongber.user.entity.UserET;
-import com.example.hongber.user.repository.SignUpRepository;
+import com.example.hongber.member.dto.SignUpReqDTO;
+import com.example.hongber.member.entity.MemberET;
+import com.example.hongber.member.repository.SignUpRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,27 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class SignUpService {
     private final SignUpRepository signUpRepository;
-    private final CommonUserService commonUserService;
+    private final CommonMemberService commonMemberService;
 
     @Transactional
     public Long SignUp(SignUpReqDTO signUpReqDTO) {
-        UserET userInfo = UserET.builder()
-                .userId(signUpReqDTO.getUserId())
+        MemberET memberInfo = MemberET.builder()
+                .memberId(signUpReqDTO.getMemberId())
                 .pass(signUpReqDTO.getPass())
                 .tel(signUpReqDTO.getTel())
                 .email(signUpReqDTO.getEmail())
-                .userNm(signUpReqDTO.getUserNm())
+                .memberNm(signUpReqDTO.getMemberNm())
                 .nickNm(signUpReqDTO.getNickNm())
                 .build();
 
-        commonUserService.ChkNickNameIsAlreadyExistsThrow(userInfo.getNickNm());
-        commonUserService.ChkTelIsAlreadyExistsThrow(userInfo.getTel());
-        commonUserService.ChkEmailIsAlreadyExistsThrow(userInfo.getEmail());
+        commonMemberService.ChkNickNameIsAlreadyExistsThrow(memberInfo.getNickNm());
+        commonMemberService.ChkTelIsAlreadyExistsThrow(memberInfo.getTel());
+        commonMemberService.ChkEmailIsAlreadyExistsThrow(memberInfo.getEmail());
 
-        if (ConstExistsCode.EXISTS == signUpRepository.findAlreadySignUpInfo(userInfo)) {
+        if (ConstExistsCode.EXISTS == signUpRepository.findAlreadySignUpInfo(memberInfo)) {
             throw new BaseException(ErrorMsg.SIGNUP_FAIL.getMsg());
         }
 
-        return signUpRepository.save(userInfo).getIdx();
+        return signUpRepository.save(memberInfo).getIdx();
     }
 }
